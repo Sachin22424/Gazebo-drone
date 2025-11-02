@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  
+  <!-- Launch Gazebo with the world and spawn all drones -->
+  <include file="$(find multi_drone_sim)/launch/spawn_drones.launch">
+    <arg name="gui" value="true"/>
+  </include>
+  
+  <!-- Start the multi-drone navigation controller -->
+  <node name="multi_drone_navigator" pkg="multi_drone_sim" type="multi_drone_navigator.py" output="screen">
+    <param name="config_path" value="$(find multi_drone_sim)/config/areas.yaml"/>
+  </node>
+  
+</launch>

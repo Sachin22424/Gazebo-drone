@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="quadcopter">
+    <pose>0 0 0.2 0 0 0</pose>
+    
+    <link name="base_link">
+      <inertial>
+        <mass>1.5</mass>
+        <inertia>
+          <ixx>0.029</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.029</iyy>
+          <iyz>0</iyz>
+          <izz>0.055</izz>
+        </inertia>
+      </inertial>
+
+      <!-- Body -->
+      <collision name="collision_body">
+        <geometry>
+          <box>
+            <size>0.3 0.3 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="visual_body">
+        <geometry>
+          <box>
+            <size>0.3 0.3 0.1</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.2 0.2 0.2 1</ambient>
+          <diffuse>0.3 0.3 0.3 1</diffuse>
+          <specular>0.5 0.5 0.5 1</specular>
+        </material>
+      </visual>
+
+      <!-- Arms visualization -->
+      <visual name="visual_arm1">
+        <pose>0.15 0.15 0 0 0 0.785</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.3</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.8 0.1 0.1 1</ambient>
+          <diffuse>0.9 0.1 0.1 1</diffuse>
+        </material>
+      </visual>
+
+      <visual name="visual_arm2">
+        <pose>-0.15 0.15 0 0 0 -0.785</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.02</radius>
+            <length>0.3</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.8 0.1 0.1 1</ambient>
+          <diffuse>0.9 0.1 0.1 1</diffuse>
+        </material>
+      </visual>
+
+      <!-- Propellers -->
+      <visual name="visual_prop1">
+        <pose>0.2 0.2 0.1 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.1</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.8 0.7</ambient>
+          <diffuse>0.1 0.1 0.9 0.7</diffuse>
+        </material>
+      </visual>
+
+      <visual name="visual_prop2">
+        <pose>-0.2 0.2 0.1 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.1</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.8 0.7</ambient>
+          <diffuse>0.1 0.1 0.9 0.7</diffuse>
+        </material>
+      </visual>
+
+      <visual name="visual_prop3">
+        <pose>0.2 -0.2 0.1 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.1</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.8 0.7</ambient>
+          <diffuse>0.1 0.1 0.9 0.7</diffuse>
+        </material>
+      </visual>
+
+      <visual name="visual_prop4">
+        <pose>-0.2 -0.2 0.1 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.1</radius>
+            <length>0.02</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.1 0.1 0.8 0.7</ambient>
+          <diffuse>0.1 0.1 0.9 0.7</diffuse>
+        </material>
+      </visual>
+
+    </link>
+
+    <!-- Planar move plugin for simplified drone control -->
+    <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>20.0</odometryRate>
+      <robotBaseFrame>base_link</robotBaseFrame>
+    </plugin>
+
+  </model>
+</sdf>

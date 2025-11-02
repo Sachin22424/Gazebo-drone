@@ -1,0 +1,183 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    
+    <!-- A global light source -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- Ground plane with green grass -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- Physics settings -->
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <gravity>0 0 -9.8</gravity>
+    </physics>
+
+    <!-- Green field base (40m x 30m) -->
+    <model name="green_field">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>40 30</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>40 30</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.2 0.6 0.2 1</ambient>
+            <diffuse>0.2 0.8 0.2 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Area 1: Red (Top-Left) -->
+    <model name="area_1">
+      <static>true</static>
+      <pose>-10 10 0.01 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 10 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.2 0.2 0.7</ambient>
+            <diffuse>0.9 0.2 0.2 0.7</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Area 2: Blue (Top-Center) -->
+    <model name="area_2">
+      <static>true</static>
+      <pose>0 10 0.01 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 10 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.2 0.8 0.7</ambient>
+            <diffuse>0.2 0.2 0.9 0.7</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Area 3: Yellow (Top-Right) -->
+    <model name="area_3">
+      <static>true</static>
+      <pose>10 10 0.01 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 10 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.2 0.7</ambient>
+            <diffuse>0.9 0.9 0.2 0.7</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Area 4: Purple (Bottom-Left) -->
+    <model name="area_4">
+      <static>true</static>
+      <pose>-10 0 0.01 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 10 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.6 0.2 0.8 0.7</ambient>
+            <diffuse>0.7 0.2 0.9 0.7</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Area 5: Orange (Bottom-Center) -->
+    <model name="area_5">
+      <static>true</static>
+      <pose>0 0 0.01 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 10 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.9 0.5 0.1 0.7</ambient>
+            <diffuse>1.0 0.6 0.1 0.7</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Area 6: Cyan (Bottom-Right) -->
+    <model name="area_6">
+      <static>true</static>
+      <pose>10 0 0.01 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10 10 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.8 0.8 0.7</ambient>
+            <diffuse>0.2 0.9 0.9 0.7</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Area labels using text (represented as boxes for simplicity) -->
+    <!-- You can add more detailed labels if needed -->
+
+  </world>
+</sdf>
